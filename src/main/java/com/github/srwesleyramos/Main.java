@@ -1,8 +1,10 @@
 package com.github.srwesleyramos;
 
+import com.github.srwesleyramos.frame.Frame;
+
 public class Main {
 
     public static void main(String[] args) {
-        // TODO: criar e executar o frame do jogo
+        new Frame();
     }
 }
