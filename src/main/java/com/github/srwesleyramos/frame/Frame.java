@@ -9,6 +9,16 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * TODO: adicionar vida ao jogador e inimigos;
+ * TODO: adicionar score ao destruir inimigo;
+ *
+ * TODO: adicionar movimentação ao jogador;
+ * TODO: adicionar disparos contra os inimigos;
+ * TODO: adicionar movimentação aos inimigos;
+ * TODO: adicionar disparos contra o jogador;
+ */
+
 public class Frame extends JFrame {
 
     public static final int FRAME_WIDTH = 500;
