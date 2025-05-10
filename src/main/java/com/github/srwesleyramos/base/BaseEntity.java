@@ -34,4 +34,8 @@ public class BaseEntity extends JLabel {
         this.setForeground(Color.BLACK);
         this.setOpaque(true);
     }
+
+    public void handleEvent(char keyChar) {
+        // not implemented yet
+    }
 }

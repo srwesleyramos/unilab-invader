@@ -6,6 +6,8 @@ import com.github.srwesleyramos.enums.EnemyType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ import java.util.List;
  * TODO: adicionar disparos contra o jogador;
  */
 
-public class Frame extends JFrame {
+public class Frame extends JFrame implements KeyListener {
 
     public static final int FRAME_WIDTH = 500;
     public static final int FRAME_HEIGHT = 500;
@@ -29,12 +31,14 @@ public class Frame extends JFrame {
 
     public Frame() {
         this.setTitle("SPACE INVADERS");
-        this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(FRAME_WIDTH + 16, FRAME_HEIGHT + 40);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
+
+        this.addKeyListener(this);
 
         this.drawEntities();
         this.drawProperties();
@@ -64,5 +68,21 @@ public class Frame extends JFrame {
         Container root = this.getContentPane();
 
         root.setBackground(Color.BLACK);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        enemies.forEach(enemy -> enemy.handleEvent(e.getKeyChar()));
+        player.handleEvent(e.getKeyChar());
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // ignored
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // ignored
     }
 }
