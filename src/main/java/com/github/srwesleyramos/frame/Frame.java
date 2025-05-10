@@ -1,14 +1,21 @@
 package com.github.srwesleyramos.frame;
 
+import com.github.srwesleyramos.entities.Enemy;
 import com.github.srwesleyramos.entities.Player;
+import com.github.srwesleyramos.enums.EnemyType;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Frame extends JFrame {
 
     public static final int FRAME_WIDTH = 500;
     public static final int FRAME_HEIGHT = 500;
+
+    public Player player;
+    public List<Enemy> enemies;
 
     public Frame() {
         this.setTitle("SPACE INVADERS");
@@ -26,11 +33,19 @@ public class Frame extends JFrame {
     private void drawEntities() {
         // PLAYER
 
-        new Player(this);
+        this.player = new Player(this);
 
         // ENEMIES
 
-        // TODO: new Enemy()
+        this.enemies = new ArrayList<>();
+
+        for (int i = 1; i <= 5; i++) {
+            EnemyType type = i != 1 ? (i == 2 || i == 3 ? EnemyType.RED : EnemyType.YELLOW) : EnemyType.GREEN;
+
+            for (int j = 1; j <= 11; j++) {
+                this.enemies.add(new Enemy(this, i, j, type));
+            }
+        }
     }
 
     private void drawProperties() {

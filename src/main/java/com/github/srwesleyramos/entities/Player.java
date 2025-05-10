@@ -2,10 +2,7 @@ package com.github.srwesleyramos.entities;
 
 import com.github.srwesleyramos.base.BaseEntity;
 import com.github.srwesleyramos.frame.Frame;
-
-import javax.swing.*;
-import java.awt.*;
-import java.net.URL;
+import com.github.srwesleyramos.frame.Utils;
 
 public class Player extends BaseEntity {
 
@@ -23,16 +20,6 @@ public class Player extends BaseEntity {
 
     @Override
     public void applySprite() {
-        URL iconUrl = getClass().getResource("/player.png");
-
-        if (iconUrl == null) {
-            throw new RuntimeException("player icon not found!");
-        }
-
-        Image image = new ImageIcon(iconUrl)
-                .getImage()
-                .getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
-
-        this.setIcon(new ImageIcon(image));
+        this.setIcon(Utils.getScaledIcon("/player.png", this.getWidth(), this.getHeight()));
     }
 }
