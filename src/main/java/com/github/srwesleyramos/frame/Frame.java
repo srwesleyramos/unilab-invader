@@ -1,8 +1,11 @@
 package com.github.srwesleyramos.frame;
 
+import com.github.srwesleyramos.base.BaseThread;
 import com.github.srwesleyramos.entities.Enemy;
 import com.github.srwesleyramos.entities.Player;
 import com.github.srwesleyramos.enums.EnemyType;
+import com.github.srwesleyramos.threads.EnemyWalkThread;
+import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,15 +19,16 @@ import java.util.List;
  * TODO: adicionar score ao destruir inimigo;
  *
  * TODO: adicionar disparos contra os inimigos;
- * TODO: adicionar movimentação aos inimigos;
  * TODO: adicionar disparos contra o jogador;
  */
 
+@Getter
 public class Frame extends JFrame implements KeyListener {
 
     public static final int FRAME_WIDTH = 500;
     public static final int FRAME_HEIGHT = 500;
 
+    public List<BaseThread> threads;
     public Player player;
     public List<Enemy> enemies;
 
@@ -41,6 +45,7 @@ public class Frame extends JFrame implements KeyListener {
 
         this.drawEntities();
         this.drawProperties();
+        this.startThreads();
     }
 
     private void drawEntities() {
@@ -67,6 +72,13 @@ public class Frame extends JFrame implements KeyListener {
         Container root = this.getContentPane();
 
         root.setBackground(Color.BLACK);
+    }
+
+    private void startThreads() {
+        // THREADS
+
+        this.threads = new ArrayList<>();
+        this.threads.add(new EnemyWalkThread(this));
     }
 
     @Override

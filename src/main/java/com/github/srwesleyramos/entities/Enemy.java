@@ -11,6 +11,8 @@ public class Enemy extends BaseEntity {
 
     public static final int ENEMY_WIDTH = 20;
     public static final int ENEMY_HEIGHT = 16;
+    public static final int ENEMY_OFFSET = 55;
+    public static final int ENEMY_SPEED = 3;
 
     private final int column, row;
     private final EnemyType type;
@@ -23,7 +25,7 @@ public class Enemy extends BaseEntity {
         this.type = type;
 
         this.spawn(
-                82 + (ENEMY_WIDTH * (column - 1)) + (10 * (column - 1)),
+                90 + (ENEMY_WIDTH * (column - 1)) + (10 * (column - 1)),
                 60 + (ENEMY_HEIGHT * (row - 1)) + (10 * (row - 1))
         );
     }
