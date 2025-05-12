@@ -12,7 +12,7 @@ public class Enemy extends BaseEntity {
     public static final int ENEMY_WIDTH = 20;
     public static final int ENEMY_HEIGHT = 16;
     public static final int ENEMY_OFFSET = 55;
-    public static final int ENEMY_SPEED = 3;
+    public static final int ENEMY_SPEED = 2;
 
     private final int column, row;
     private final EnemyType type;

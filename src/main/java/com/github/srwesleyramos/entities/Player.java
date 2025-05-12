@@ -9,7 +9,7 @@ public class Player extends BaseEntity {
     public static final int PLAYER_WIDTH = 26;
     public static final int PLAYER_HEIGHT = 13;
     public static final int PLAYER_OFFSET = 205;
-    public static final int PLAYER_SPEED = 3;
+    public static final int PLAYER_SPEED = 4;
 
     public Player(Frame frame) {
         super(frame, PLAYER_WIDTH, PLAYER_HEIGHT);
