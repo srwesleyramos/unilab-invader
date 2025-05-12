@@ -32,7 +32,7 @@ public class Enemy extends BaseEntity {
 
     @Override
     public void applySprite() {
-        this.setIcon(Utils.getScaledIcon("/enemy_" + this.type.name().toLowerCase() + ".png", this.getWidth(), this.getHeight()));
+        this.setIcon(Utils.getScaledIcon("/assets/" + this.type.name().toLowerCase() + "/stand.png", this.getWidth(), this.getHeight()));
     }
 
     @Override

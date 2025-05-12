@@ -72,7 +72,7 @@ public class Frame extends JFrame {
         this.enemies = new ArrayList<>();
 
         for (int i = 1; i <= 5; i++) {
-            EnemyType type = i != 1 ? (i == 2 || i == 3 ? EnemyType.RED : EnemyType.YELLOW) : EnemyType.GREEN;
+            EnemyType type = i != 1 ? (i == 2 || i == 3 ? EnemyType.CRAB : EnemyType.OCTOPUS) : EnemyType.SQUID;
 
             for (int j = 1; j <= 11; j++) {
                 this.enemies.add(new Enemy(this, i, j, type));

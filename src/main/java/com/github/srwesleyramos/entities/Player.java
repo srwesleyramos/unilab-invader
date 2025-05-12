@@ -34,7 +34,7 @@ public class Player extends BaseEntity {
 
     @Override
     public void applySprite() {
-        this.setIcon(Utils.getScaledIcon("/player.png", this.getWidth(), this.getHeight()));
+        this.setIcon(Utils.getScaledIcon("/assets/player.png", this.getWidth(), this.getHeight()));
     }
 
     @Override
