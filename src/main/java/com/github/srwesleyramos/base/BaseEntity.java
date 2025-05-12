@@ -24,6 +24,8 @@ public class BaseEntity extends JLabel {
         this.x0 = x0;
         this.y0 = y0;
 
+        // spawning entity
+
         this.setBounds(x0, y0, width, height);
         this.applySprite();
         this.frame.add(this);
@@ -35,7 +37,11 @@ public class BaseEntity extends JLabel {
         this.setOpaque(true);
     }
 
+    public void handleEvent(BaseEntity entity) {
+        // not implemented yet | damage
+    }
+
     public void handleEvent(char keyChar) {
-        // not implemented yet
+        // not implemented yet | keyboard
     }
 }

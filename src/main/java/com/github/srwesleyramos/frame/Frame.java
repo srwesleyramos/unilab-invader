@@ -4,51 +4,42 @@ import com.github.srwesleyramos.base.BaseThread;
 import com.github.srwesleyramos.entities.Enemy;
 import com.github.srwesleyramos.entities.Player;
 import com.github.srwesleyramos.enums.EnemyType;
-import com.github.srwesleyramos.threads.EnemyWalkThread;
+import com.github.srwesleyramos.threads.KeyboardThread;
+import com.github.srwesleyramos.threads.MovementThread;
 import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * TODO: adicionar vida ao jogador e inimigos;
- * TODO: adicionar score ao destruir inimigo;
- *
- * TODO: adicionar disparos contra os inimigos;
- * TODO: adicionar disparos contra o jogador;
- */
-
 @Getter
-public class Frame extends JFrame implements KeyListener {
+public class Frame extends JFrame {
 
     public static final int FRAME_WIDTH = 500;
     public static final int FRAME_HEIGHT = 500;
 
-    public List<BaseThread> threads;
-    public Player player;
     public List<Enemy> enemies;
+    public List<BaseThread> threads;
+
+    public Player player;
 
     public Frame() {
-        this.setTitle("SPACE INVADERS");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(FRAME_WIDTH + 16, FRAME_HEIGHT + 40);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
 
-        this.addKeyListener(this);
-
-        this.drawEntities();
-        this.drawProperties();
+        this.spawnEntities();
+        this.drawLayout();
         this.startThreads();
+
+        this.addKeyListener(new KeyboardThread(this));
     }
 
-    private void drawEntities() {
+    private void spawnEntities() {
         // PLAYER
 
         this.player = new Player(this);
@@ -66,7 +57,7 @@ public class Frame extends JFrame implements KeyListener {
         }
     }
 
-    private void drawProperties() {
+    private void drawLayout() {
         // ROOT
 
         Container root = this.getContentPane();
@@ -78,22 +69,6 @@ public class Frame extends JFrame implements KeyListener {
         // THREADS
 
         this.threads = new ArrayList<>();
-        this.threads.add(new EnemyWalkThread(this));
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        enemies.forEach(enemy -> enemy.handleEvent(e.getKeyChar()));
-        player.handleEvent(e.getKeyChar());
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // ignored
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // ignored
+        this.threads.add(new MovementThread(this));
     }
 }

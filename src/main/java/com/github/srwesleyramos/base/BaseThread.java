@@ -19,12 +19,12 @@ public abstract class BaseThread implements ActionListener {
         this.timer.start();
     }
 
-    public abstract void run();
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == timer) {
             this.run();
         }
     }
+
+    public abstract void run();
 }

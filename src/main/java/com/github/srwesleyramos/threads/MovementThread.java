@@ -6,21 +6,26 @@ import com.github.srwesleyramos.frame.Frame;
 
 import java.util.List;
 
-// TODO: cancelar a thread quando todos morrerem
-
-public class EnemyWalkThread extends BaseThread {
+public class MovementThread extends BaseThread {
 
     private int path = 1;
 
-    public EnemyWalkThread(Frame frame) {
+    public MovementThread(Frame frame) {
         super(frame, 50);
     }
 
     @Override
     public void run() {
-        List<Enemy> enemies = this.getFrame().getEnemies();
+        // enemies still alive?
+
+        if (this.getFrame().getEnemies().isEmpty()) {
+            this.getTimer().stop();
+            return;
+        }
 
         // updating new location
+
+        List<Enemy> enemies = this.getFrame().getEnemies();
 
         for (Enemy enemy : enemies) {
             if (path == 1) {

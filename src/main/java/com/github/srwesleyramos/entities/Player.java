@@ -16,7 +16,7 @@ public class Player extends BaseEntity {
 
         this.spawn(
                 (Frame.FRAME_WIDTH / 2) - (PLAYER_WIDTH / 2),
-                (Frame.FRAME_HEIGHT - 40) - PLAYER_HEIGHT - 30
+                Frame.FRAME_HEIGHT - PLAYER_HEIGHT - 30
         );
     }
 
