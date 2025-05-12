@@ -2,8 +2,8 @@ package com.github.srwesleyramos.entities;
 
 import com.github.srwesleyramos.base.BaseEntity;
 import com.github.srwesleyramos.enums.EnemyType;
-import com.github.srwesleyramos.frame.Frame;
-import com.github.srwesleyramos.frame.Utils;
+import com.github.srwesleyramos.layout.GameLayout;
+import com.github.srwesleyramos.Utils;
 import lombok.Getter;
 
 @Getter
@@ -17,8 +17,8 @@ public class Enemy extends BaseEntity {
     private final int column, row;
     private final EnemyType type;
 
-    public Enemy(Frame frame, int row, int column, EnemyType type) {
-        super(frame, ENEMY_WIDTH, ENEMY_HEIGHT);
+    public Enemy(GameLayout game, int row, int column, EnemyType type) {
+        super(game, ENEMY_WIDTH, ENEMY_HEIGHT);
 
         this.column = column;
         this.row = row;
@@ -39,7 +39,7 @@ public class Enemy extends BaseEntity {
     public void handleEvent(BaseEntity entity) {
         // TODO: adicionar animação de morte
 
-        getFrame().remove(this);
-        getFrame().getEnemies().remove(this);
+        getGame().remove(this);
+        getGame().getEnemies().remove(this);
     }
 }

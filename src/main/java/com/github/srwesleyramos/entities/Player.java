@@ -1,8 +1,8 @@
 package com.github.srwesleyramos.entities;
 
 import com.github.srwesleyramos.base.BaseEntity;
-import com.github.srwesleyramos.frame.Frame;
-import com.github.srwesleyramos.frame.Utils;
+import com.github.srwesleyramos.layout.GameLayout;
+import com.github.srwesleyramos.Utils;
 
 public class Player extends BaseEntity {
 
@@ -13,23 +13,23 @@ public class Player extends BaseEntity {
 
     private Bullet bullet;
 
-    public Player(Frame frame) {
-        super(frame, PLAYER_WIDTH, PLAYER_HEIGHT);
+    public Player(GameLayout game) {
+        super(game, PLAYER_WIDTH, PLAYER_HEIGHT);
 
         this.create(
-                (Frame.FRAME_WIDTH / 2) - (PLAYER_WIDTH / 2),
-                Frame.FRAME_HEIGHT - PLAYER_HEIGHT - 30
+                (GameLayout.FRAME_WIDTH / 2) - (PLAYER_WIDTH / 2),
+                GameLayout.FRAME_HEIGHT - PLAYER_HEIGHT - 30
         );
     }
 
     public void createBullet() {
-        if (getFrame().getBullets().contains(bullet)) {
+        if (getGame().getBullets().contains(bullet)) {
             System.out.println("[debug]: player's bullet has already been fired");
             return;
         }
 
-        bullet = new Bullet(getFrame(), this);
-        getFrame().getBullets().add(bullet);
+        bullet = new Bullet(getGame(), this);
+        getGame().getBullets().add(bullet);
     }
 
     @Override

@@ -1,24 +1,24 @@
 package com.github.srwesleyramos.threads;
 
-import com.github.srwesleyramos.frame.Frame;
+import com.github.srwesleyramos.layout.GameLayout;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardThread implements KeyListener {
 
-    private final Frame frame;
+    private final GameLayout game;
 
-    public KeyboardThread(Frame frame) {
-        this.frame = frame;
+    public KeyboardThread(GameLayout game) {
+        this.game = game;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        this.frame.getEnemies().forEach(
+        this.game.getEnemies().forEach(
                 enemy -> enemy.handleEvent(e.getKeyChar())
         );
-        this.frame.getPlayer().handleEvent(e.getKeyChar());
+        this.game.getPlayer().handleEvent(e.getKeyChar());
     }
 
     @Override

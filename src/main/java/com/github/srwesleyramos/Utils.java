@@ -1,4 +1,4 @@
-package com.github.srwesleyramos.frame;
+package com.github.srwesleyramos;
 
 import com.github.srwesleyramos.base.BaseEntity;
 import com.github.srwesleyramos.entities.Bullet;

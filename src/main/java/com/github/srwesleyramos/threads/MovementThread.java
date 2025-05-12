@@ -2,7 +2,7 @@ package com.github.srwesleyramos.threads;
 
 import com.github.srwesleyramos.base.BaseThread;
 import com.github.srwesleyramos.entities.Enemy;
-import com.github.srwesleyramos.frame.Frame;
+import com.github.srwesleyramos.layout.GameLayout;
 
 import java.util.List;
 
@@ -10,22 +10,22 @@ public class MovementThread extends BaseThread {
 
     private int path = 1;
 
-    public MovementThread(Frame frame) {
-        super(frame, 50);
+    public MovementThread(GameLayout game) {
+        super(game, 50);
     }
 
     @Override
     public void run() {
         // enemies still alive?
 
-        if (this.getFrame().getEnemies().isEmpty()) {
+        if (this.getGame().getEnemies().isEmpty()) {
             this.getTimer().stop();
             return;
         }
 
         // updating new location
 
-        List<Enemy> enemies = this.getFrame().getEnemies();
+        List<Enemy> enemies = this.getGame().getEnemies();
 
         for (Enemy enemy : enemies) {
             if (path == 1) {

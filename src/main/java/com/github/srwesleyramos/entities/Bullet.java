@@ -1,7 +1,7 @@
 package com.github.srwesleyramos.entities;
 
 import com.github.srwesleyramos.base.BaseEntity;
-import com.github.srwesleyramos.frame.Frame;
+import com.github.srwesleyramos.layout.GameLayout;
 import lombok.Getter;
 
 import java.awt.*;
@@ -16,8 +16,8 @@ public class Bullet extends BaseEntity {
     private final BaseEntity entity;
     private final int direction;
 
-    public Bullet(Frame frame, BaseEntity entity) {
-        super(frame, BULLET_WIDTH, BULLET_HEIGHT);
+    public Bullet(GameLayout game, BaseEntity entity) {
+        super(game, BULLET_WIDTH, BULLET_HEIGHT);
 
         this.entity = entity;
         this.direction = entity instanceof Player ? -1 : +1;
@@ -42,7 +42,7 @@ public class Bullet extends BaseEntity {
             System.out.println("bullet was destroyed!");
         }
 
-        getFrame().remove(this);
-        getFrame().getBullets().remove(this);
+        getGame().remove(this);
+        getGame().getBullets().remove(this);
     }
 }

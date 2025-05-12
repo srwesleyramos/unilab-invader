@@ -1,6 +1,6 @@
 package com.github.srwesleyramos.base;
 
-import com.github.srwesleyramos.frame.Frame;
+import com.github.srwesleyramos.layout.GameLayout;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
 @Getter
 public abstract class BaseThread implements ActionListener {
 
-    private final Frame frame;
+    private final GameLayout game;
     private final Timer timer;
 
-    public BaseThread(Frame frame, int delay) {
-        this.frame = frame;
+    public BaseThread(GameLayout game, int delay) {
+        this.game = game;
         this.timer = new Timer(delay, this);
         this.timer.start();
     }

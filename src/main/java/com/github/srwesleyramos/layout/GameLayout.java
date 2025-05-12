@@ -1,4 +1,4 @@
-package com.github.srwesleyramos.frame;
+package com.github.srwesleyramos.layout;
 
 import com.github.srwesleyramos.base.BaseThread;
 import com.github.srwesleyramos.entities.Bullet;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class Frame extends JFrame {
+public class GameLayout extends JFrame {
 
     public static final int FRAME_WIDTH = 500;
     public static final int FRAME_HEIGHT = 500;
@@ -27,7 +27,7 @@ public class Frame extends JFrame {
 
     public Player player;
 
-    public Frame() {
+    public GameLayout() {
         this.setSize(FRAME_WIDTH + 16, FRAME_HEIGHT + 40);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);

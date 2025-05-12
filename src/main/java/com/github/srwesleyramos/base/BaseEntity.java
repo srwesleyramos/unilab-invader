@@ -1,6 +1,6 @@
 package com.github.srwesleyramos.base;
 
-import com.github.srwesleyramos.frame.Frame;
+import com.github.srwesleyramos.layout.GameLayout;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -9,13 +9,13 @@ import java.awt.*;
 @Getter
 public class BaseEntity extends JLabel {
 
-    private final Frame frame;
+    private final GameLayout game;
     private final int width, height;
 
     private int x0, y0;
 
-    public BaseEntity(Frame frame, int width, int height) {
-        this.frame = frame;
+    public BaseEntity(GameLayout game, int width, int height) {
+        this.game = game;
         this.width = width;
         this.height = height;
     }
@@ -28,7 +28,7 @@ public class BaseEntity extends JLabel {
 
         this.setBounds(x0, y0, width, height);
         this.applySprite();
-        this.frame.add(this);
+        this.game.add(this);
     }
 
     public void applySprite() {
