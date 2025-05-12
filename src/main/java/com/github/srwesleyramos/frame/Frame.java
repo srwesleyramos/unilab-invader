@@ -1,11 +1,13 @@
 package com.github.srwesleyramos.frame;
 
 import com.github.srwesleyramos.base.BaseThread;
+import com.github.srwesleyramos.entities.Bullet;
 import com.github.srwesleyramos.entities.Enemy;
 import com.github.srwesleyramos.entities.Player;
 import com.github.srwesleyramos.enums.EnemyType;
 import com.github.srwesleyramos.threads.KeyboardThread;
 import com.github.srwesleyramos.threads.MovementThread;
+import com.github.srwesleyramos.threads.ProjectileThread;
 import lombok.Getter;
 
 import javax.swing.*;
@@ -19,6 +21,7 @@ public class Frame extends JFrame {
     public static final int FRAME_WIDTH = 500;
     public static final int FRAME_HEIGHT = 500;
 
+    public List<Bullet> bullets;
     public List<Enemy> enemies;
     public List<BaseThread> threads;
 
@@ -52,9 +55,14 @@ public class Frame extends JFrame {
 
         this.threads = new ArrayList<>();
         this.threads.add(new MovementThread(this));
+        this.threads.add(new ProjectileThread(this));
     }
 
     private void spawnEntities() {
+        // BULLETS
+
+        this.bullets = new ArrayList<>();
+
         // PLAYER
 
         this.player = new Player(this);
