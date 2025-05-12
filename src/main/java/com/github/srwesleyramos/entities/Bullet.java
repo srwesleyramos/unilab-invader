@@ -22,7 +22,7 @@ public class Bullet extends BaseEntity {
         this.entity = entity;
         this.direction = entity instanceof Player ? -1 : +1;
 
-        this.spawn(
+        this.create(
                 entity.getX() + (entity.getWidth() / 2) - (BULLET_WIDTH / 2),
                 entity.getY() + (entity.getHeight() * direction) + (BULLET_HEIGHT * direction)
         );
@@ -36,16 +36,13 @@ public class Bullet extends BaseEntity {
 
     @Override
     public void handleEvent(BaseEntity entity) {
-        setVisible(false);
-
         if (entity instanceof Bullet || entity == null) {
             // TODO: adicionar animação de explosão
 
             System.out.println("bullet was destroyed!");
-        } else {
-            System.out.println("bullet got hit!");
         }
 
+        getFrame().remove(this);
         getFrame().getBullets().remove(this);
     }
 }

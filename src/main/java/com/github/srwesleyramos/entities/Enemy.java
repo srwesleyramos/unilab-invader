@@ -24,7 +24,7 @@ public class Enemy extends BaseEntity {
         this.row = row;
         this.type = type;
 
-        this.spawn(
+        this.create(
                 90 + (ENEMY_WIDTH * (column - 1)) + (10 * (column - 1)),
                 60 + (ENEMY_HEIGHT * (row - 1)) + (10 * (row - 1))
         );
@@ -33,5 +33,13 @@ public class Enemy extends BaseEntity {
     @Override
     public void applySprite() {
         this.setIcon(Utils.getScaledIcon("/enemy_" + this.type.name().toLowerCase() + ".png", this.getWidth(), this.getHeight()));
+    }
+
+    @Override
+    public void handleEvent(BaseEntity entity) {
+        // TODO: adicionar animação de morte
+
+        getFrame().remove(this);
+        getFrame().getEnemies().remove(this);
     }
 }

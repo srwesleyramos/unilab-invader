@@ -20,7 +20,7 @@ public class BaseEntity extends JLabel {
         this.height = height;
     }
 
-    public void spawn(int x0, int y0) {
+    public void create(int x0, int y0) {
         this.x0 = x0;
         this.y0 = y0;
 
