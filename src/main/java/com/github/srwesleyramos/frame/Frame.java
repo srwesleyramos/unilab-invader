@@ -39,6 +39,21 @@ public class Frame extends JFrame {
         this.addKeyListener(new KeyboardThread(this));
     }
 
+    private void drawLayout() {
+        // ROOT
+
+        Container root = this.getContentPane();
+
+        root.setBackground(Color.BLACK);
+    }
+
+    private void startThreads() {
+        // THREADS
+
+        this.threads = new ArrayList<>();
+        this.threads.add(new MovementThread(this));
+    }
+
     private void spawnEntities() {
         // PLAYER
 
@@ -55,20 +70,5 @@ public class Frame extends JFrame {
                 this.enemies.add(new Enemy(this, i, j, type));
             }
         }
-    }
-
-    private void drawLayout() {
-        // ROOT
-
-        Container root = this.getContentPane();
-
-        root.setBackground(Color.BLACK);
-    }
-
-    private void startThreads() {
-        // THREADS
-
-        this.threads = new ArrayList<>();
-        this.threads.add(new MovementThread(this));
     }
 }
